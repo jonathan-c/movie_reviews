@@ -1,6 +1,7 @@
 MovieReviewsCastillo::Application.routes.draw do
   
   get "pages/index"
+  match "/search" => "pages#search"
 
   root to: 'pages#index'
   # The priority is based upon order of creation:

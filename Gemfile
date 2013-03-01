@@ -7,7 +7,7 @@ gem 'rails', '3.2.11'
 
 gem 'sqlite3'
 gem 'bootstrap-sass', '2.1'
-
+gem 'badfruit'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,4 +36,4 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
