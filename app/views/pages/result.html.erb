@@ -29,7 +29,13 @@
 		<% if current_user.nil? %>
 			<%= link_to "Want to leave a review? Sign in with Facebook.", '/auth/facebook' %>
 			<% else %>
-			<%= link_to "Sign out", signout_path %>
+			<div id="sign-out">
+				<%= link_to "Sign out", signout_path %>
+			</div>
+			<div id="profile-info">
+				<%= image_tag(current_user.image) %>
+				<%= current_user.name %><br>
+			</div>
 			<% end %>
 	</div>
 </div>
