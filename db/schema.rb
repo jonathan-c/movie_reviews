@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302004929) do
+ActiveRecord::Schema.define(:version => 20130302015613) do
+
+# Could not dump table "comments" because of following StandardError
+#   Unknown type 'foreign_key' for column 'movie_id'
+
+  create_table "movies", :force => true do |t|
+    t.string   "title"
+    t.integer  "year"
+    t.string   "mpaa_rating"
+    t.integer  "runtime"
+    t.string   "synopsis"
+    t.string   "poster"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "provider"

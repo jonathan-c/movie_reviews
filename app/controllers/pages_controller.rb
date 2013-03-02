@@ -9,7 +9,12 @@ class PagesController < ApplicationController
   end
   
   def result
-    @result ||= search_for_movie(session[:search])
+    search_query = search_for_movie(session[:search])
+    if !search_query.nil? && Movie.find_by_title(search_query[0].name).nil?
+      save_movie(search_query) 
+      save_reviews(search_query)
+    end
+    @result ||= Movie.find_by_title(search_query[0].name)
   end
   
   private
@@ -17,6 +22,19 @@ class PagesController < ApplicationController
   def search_for_movie(title)
     bf = BadFruit.new("c337mtn76ujsn6m6krkyrdp2")
     bf.movies.search_by_name(title)
+  end
+  
+  def save_movie(result)
+    create_hash = {title: result[0].name, poster: result[0].posters.original, runtime: result[0].runtime, synopsis: result[0].synopsis, year: result[0].year, mpaa_rating: result[0].mpaa_rating}
+    Movie.create(create_hash)
+  end
+  
+  def save_reviews(result)
+    movie = Movie.find_by_title(result[0].name)
+    result[0].reviews.each do |review|
+      create_hash = {critic: review.critic, date: review.date, publication: review.publication, url: review.links["review"]}
+      movie.comments.create(create_hash)
+    end
   end
   
 end

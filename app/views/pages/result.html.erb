@@ -2,25 +2,25 @@
 	
 	<% if !@result.nil? %>
 		<div id="poster">
-		<%= image_tag(@result[0].posters.original, size: "300x175") %>
+		<%= image_tag(@result.poster, size: "300x175") %>
 		</div>
 
 		<div id="movie-title">
-		<%= @result[0].name %>
+		<%= @result.title %>
 		</div>
 
 		<div id="stats">
-		<%= @result[0].year %> <%= @result[0].mpaa_rating %> <%= @result[0].runtime %> minutes
+		<%= @result.year %> <%= @result.mpaa_rating %> <%= @result.runtime %> minutes
 		</div>
 	
 		<div id="synopsis">
-		<%= @result[0].synopsis.empty? ? "Synopsis is not available for this film." : @result[0].synopsis %>
+		<%= @result.synopsis.empty? ? "Synopsis is not available for this film." : @result.synopsis %>
 		</div>
 	
 		<ul id="reviews">
 			<b><u>Reviews</u></b>
-		<% @result[0].reviews.each do |i| %>
-		<li><%= link_to("#{i.critic}: #{i.publication} (#{i.date})", i.links["review"], target: "_blank") %></li>
+		<% @result.comments.each do |i| %>
+		<li><%= link_to("#{i.critic}: #{i.publication} (#{i.date})", i.url, target: "_blank") %></li>
 		<% end %>
 		</ul>
 	<% end %>
