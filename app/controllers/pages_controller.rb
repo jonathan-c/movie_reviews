@@ -4,7 +4,12 @@ class PagesController < ApplicationController
   end
   
   def search
-    @result = search_for_movie(params[:q].to_s)
+    session[:search] = params[:q].to_s
+    redirect_to result_path
+  end
+  
+  def result
+    @result ||= search_for_movie(session[:search])
   end
   
   private
@@ -13,4 +18,5 @@ class PagesController < ApplicationController
     bf = BadFruit.new("c337mtn76ujsn6m6krkyrdp2")
     bf.movies.search_by_name(title)
   end
+  
 end

@@ -1,7 +1,12 @@
 MovieReviewsCastillo::Application.routes.draw do
   
+  get "sessions/create"
+
   get "pages/index"
-  match "/search" => "pages#search"
+  match '/search' => 'pages#search'
+  match '/result' => 'pages#result'
+  match '/auth/facebook/callback' => 'sessions#create'
+  match '/signout' => 'sessions#destroy', :as => :signout
 
   root to: 'pages#index'
   # The priority is based upon order of creation:

@@ -16,6 +16,14 @@
 	display: inline-block;
 }
 
+#sign-in{
+	display: inline-block;
+	font-size: 30px;
+	color: black;
+	border: 2px solid black;
+	margin-top: 10px;
+}
+
 #poster {
 	display: inline-block;
 	border: 6px solid gray;
