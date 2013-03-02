@@ -15,6 +15,20 @@ class PagesController < ApplicationController
       save_reviews(search_query)
     end
     @result ||= Movie.find_by_title(search_query[0].name)
+    @comment = @result.comments
+  end
+  
+  
+  def create
+    search_query = search_for_movie(session[:search])
+    @movie = Movie.find_by_title(search_query[0].name)
+    @comment = @movie.comments.create(text: params[:comment][:text], critic: params[:critic], date: params[:date])
+    if @comment.save
+      flash[:success] = "Review added!"
+      redirect_to result_path
+    else
+      redirect_to result_path
+    end
   end
   
   private

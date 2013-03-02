@@ -36,6 +36,16 @@
 				<%= image_tag(current_user.image) %>
 				<%= current_user.name %><br>
 			</div>
+			<div id="comment-box">
+			<%= form_for @comment, :url => { :action => "create" } do |f| %>
+			  <div class="field">
+			    <%= f.text_area :text, placeholder: "Compose new review..." %>
+					<%= hidden_field_tag 'critic', "#{current_user.name}"  %>
+					<%= hidden_field_tag 'date', "#{Time.now.strftime("%m/%d/%Y")}"  %>
+			  </div>
+			  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+			<% end %>
+			</div>
 			<% end %>
 	</div>
 </div>
