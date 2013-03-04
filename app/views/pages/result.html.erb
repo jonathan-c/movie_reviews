@@ -23,7 +23,7 @@
 			<% if i.text.nil? %>
 			<li><%= link_to("#{i.critic}: #{i.publication} (#{i.date})", i.url, target: "_blank") %></li>
 			<% else %>
-				<li><%= link_to("#{i.critic}: (#{i.date})", "/comments/#{i.id}", target: "_blank") %></li>
+				<li><%= link_to("#{i.critic}: (#{i.date})", "/comments/#{i.id}") %></li>
 			<% end %>
 		<% end %>
 		</ul>
