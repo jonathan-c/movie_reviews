@@ -1,0 +1,12 @@
+<div class="hero-unit" id="review-page">
+	<h3><%= @comment.movie.title %></h3>
+	<%= image_tag(@comment.movie.poster, height: "25%", width: "25%") %>
+	<div id="review-label">
+	<span class="label label-info">
+		Reviewed by <%= @comment.critic%> on <%= @comment.date %>
+	</span>
+	</div>
+	<div class="well" id="review-box">
+		<%= @comment.text %>
+	</div>
+</div>

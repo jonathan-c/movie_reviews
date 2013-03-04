@@ -5,10 +5,11 @@ MovieReviewsCastillo::Application.routes.draw do
   get "pages/index"
   match '/search' => 'pages#search'
   match '/result' => 'pages#result'
-  match '/comments' => 'pages#result'
   match '/create' => 'pages#create'
   match '/auth/facebook/callback' => 'sessions#create'
   match '/signout' => 'sessions#destroy', :as => :signout
+  
+  resources :comments, only: [:show]
 
   root to: 'pages#index'
   # The priority is based upon order of creation:

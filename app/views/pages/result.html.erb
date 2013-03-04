@@ -20,7 +20,11 @@
 		<ul id="reviews">
 			<b><u>Reviews</u></b>
 		<% @result.comments.each do |i| %>
-		<li><%= link_to("#{i.critic}: #{i.publication} (#{i.date})", i.url, target: "_blank") %></li>
+			<% if i.text.nil? %>
+			<li><%= link_to("#{i.critic}: #{i.publication} (#{i.date})", i.url, target: "_blank") %></li>
+			<% else %>
+				<li><%= link_to("#{i.critic}: (#{i.date})", "/comments/#{i.id}", target: "_blank") %></li>
+			<% end %>
 		<% end %>
 		</ul>
 	<% end %>
@@ -36,7 +40,7 @@
 			<div id="comment-box">
 			<%= form_for @comment, :url => { :action => "create" } do |f| %>
 			  <div class="field">
-			    <%= f.text_area :text, style: "width: 925px; height: 200px", placeholder: "Compose new review..." %>
+			    <%= f.text_area :text, style: "width: 850px; height: 200px", placeholder: "Compose new review..." %>
 					<%= hidden_field_tag 'critic', "#{current_user.name}"  %>
 					<%= hidden_field_tag 'date', "#{Time.now.strftime("%m/%d/%Y")}"  %>
 			  </div>

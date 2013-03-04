@@ -59,6 +59,15 @@
 	margin-left: 350px;
 }
 
+#profile-info {
+	font-size: 16px;
+	width: 900px;
+}
+
+#greeting {
+	font-size: 24px;
+}
+
 .field {
 	width: 600px;
 }
@@ -83,4 +92,19 @@
 
 #search {
 	margin-top: 175px;
+}
+
+#review-page {
+	display: inline-block;
+}
+
+#review-box {
+	float: right;
+	width: 550px;
+	margin-top: -300px;
+}
+
+#review-label {
+	float: right;
+	margin-left: 400px;
 }
