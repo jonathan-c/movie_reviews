@@ -62,3 +62,25 @@
 .field {
 	width: 600px;
 }
+
+#search-form input {
+	position: inline-block;
+  width: 700px;
+	height: 50px;
+	font-size: 34px;
+	font-family: Arial;
+}
+
+#search-submit-button input {
+	position: inline-block;
+	float: right;
+	width: 200px;
+	height: 50px;
+	font-size: 24px;
+	font-family: Arial;
+	margin-top: -60px;
+}
+
+#search {
+	margin-top: 175px;
+}
