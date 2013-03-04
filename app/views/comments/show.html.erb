@@ -1,9 +1,15 @@
 <div class="hero-unit" id="review-page">
 	<h3><%= @comment.movie.title %></h3>
 	<%= image_tag(@comment.movie.poster, height: "25%", width: "25%") %>
-	<div id="review-label">
+	<div id="review-info">
 	<span class="label label-info">
-		Reviewed by <%= @comment.critic%> on <%= @comment.date %>
+		Reviewed by <%= @comment.critic%>
+	</span><br>
+	<span class="label label-inverse">
+	<%= @comment.date %>
+	</span><br><br>
+	<span class="btn" id="delete-button">
+	<%= link_to "Delete this review?", comment_path(@comment), method: :delete, confirm: "Are you sure you want to delete this review?" %>
 	</span>
 	</div>
 	<div class="well" id="review-box">

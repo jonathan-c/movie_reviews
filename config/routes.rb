@@ -9,7 +9,7 @@ MovieReviewsCastillo::Application.routes.draw do
   match '/auth/facebook/callback' => 'sessions#create'
   match '/signout' => 'sessions#destroy', :as => :signout
   
-  resources :comments, only: [:show]
+  resources :comments, only: [:show, :destroy]
 
   root to: 'pages#index'
   # The priority is based upon order of creation:
