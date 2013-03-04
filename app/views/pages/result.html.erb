@@ -28,10 +28,10 @@
 		<% end %>
 		</ul>
 	<% end %>
-
+	<br><br><br>
 	<div id="sign-in">
 		<% if current_user.nil? %>
-			<%= link_to "Want to leave a review? Sign in with Facebook.", '/auth/facebook' %>
+			<h3><%= link_to "Want to leave a review? Sign in with Facebook.", '/auth/facebook' %></h3>
 			<% else %>
 			<div id="profile-info">
 				<%= image_tag(current_user.image) %>
