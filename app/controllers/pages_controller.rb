@@ -16,7 +16,6 @@ class PagesController < ApplicationController
     end
     @result ||= Movie.find_by_title(search_query[0].name)
     @comment = @result.comments
-    debugger
   end
   
   
