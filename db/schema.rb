@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304204912) do
+ActiveRecord::Schema.define(:version => 20130304205832) do
 
   create_table "comments", :force => true do |t|
     t.string   "critic"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20130304204912) do
     t.integer  "year"
     t.string   "mpaa_rating"
     t.integer  "runtime"
-    t.string   "synopsis"
+    t.text     "synopsis"
     t.string   "poster"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
