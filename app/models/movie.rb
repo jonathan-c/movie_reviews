@@ -1,5 +1,5 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :mpaa_rating, :poster, :runtime, :synopsis, :title, :year
+  attr_accessible :mpaa_rating, :poster, :runtime, :synopsis, :title, :year, :critics_score
   
   has_many :comments
   

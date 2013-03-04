@@ -16,6 +16,7 @@ class PagesController < ApplicationController
     end
     @result ||= Movie.find_by_title(search_query[0].name)
     @comment = @result.comments
+    debugger
   end
   
   
@@ -39,7 +40,7 @@ class PagesController < ApplicationController
   end
   
   def save_movie(result)
-    create_hash = {title: result[0].name, poster: result[0].posters.original, runtime: result[0].runtime, synopsis: result[0].synopsis, year: result[0].year, mpaa_rating: result[0].mpaa_rating}
+    create_hash = {title: result[0].name, poster: result[0].posters.original, runtime: result[0].runtime, synopsis: result[0].synopsis, year: result[0].year, mpaa_rating: result[0].mpaa_rating, critics_score: result[0].scores.critics_score}
     Movie.create(create_hash)
   end
   
