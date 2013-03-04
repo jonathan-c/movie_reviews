@@ -10,7 +10,11 @@ class PagesController < ApplicationController
   
   def result
     search_query = search_for_movie(session[:search])
-    if !search_query.nil? && Movie.find_by_title(search_query[0].name).nil?
+    if search_query.empty?
+      flash[:notice] = "This movie does not exist. Please try a different movie."
+      return redirect_to root_path
+    end
+    if !search_query.empty? && Movie.find_by_title(search_query[0].name).nil?
       save_movie(search_query) 
       save_reviews(search_query)
     end
