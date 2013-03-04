@@ -1,5 +1,5 @@
 <div class="movie-page">
-	
+
 	<% if !@result.nil? %>
 		<div id="poster">
 		<%= image_tag(@result.poster, size: "300x175") %>
@@ -10,13 +10,13 @@
 		</div>
 
 		<div id="stats">
-		<%= @result.year %> <%= @result.mpaa_rating %> <%= @result.runtime %> minutes
+		<%= @result.year %> <%= @result.mpaa_rating %> <%= @result.runtime %> minutes <%= @result.critics_score %>% <%= @result.fresh? ? "Fresh" : "Rotten" %>
 		</div>
-	
+
 		<div id="synopsis">
 		<%= @result.synopsis.empty? ? "Synopsis is not available for this film." : @result.synopsis %>
 		</div>
-	
+
 		<ul id="reviews">
 			<b><u>Reviews</u></b>
 		<% @result.comments.each do |i| %>
@@ -24,22 +24,19 @@
 		<% end %>
 		</ul>
 	<% end %>
-	
+
 	<div id="sign-in">
 		<% if current_user.nil? %>
 			<%= link_to "Want to leave a review? Sign in with Facebook.", '/auth/facebook' %>
 			<% else %>
-			<div id="sign-out">
-				<%= link_to "Sign out", signout_path %>
-			</div>
 			<div id="profile-info">
 				<%= image_tag(current_user.image) %>
-				<%= current_user.name %><br>
+				<span id="greeting">Hi, <%= current_user.name %>!</span> Please post your review for this film.<br>
 			</div>
 			<div id="comment-box">
 			<%= form_for @comment, :url => { :action => "create" } do |f| %>
 			  <div class="field">
-			    <%= f.text_area :text, placeholder: "Compose new review..." %>
+			    <%= f.text_area :text, style: "width: 925px; height: 200px", placeholder: "Compose new review..." %>
 					<%= hidden_field_tag 'critic', "#{current_user.name}"  %>
 					<%= hidden_field_tag 'date', "#{Time.now.strftime("%m/%d/%Y")}"  %>
 			  </div>
@@ -49,4 +46,3 @@
 			<% end %>
 	</div>
 </div>
-
