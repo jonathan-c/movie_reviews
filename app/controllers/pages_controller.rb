@@ -28,7 +28,7 @@ class PagesController < ApplicationController
     @movie = Movie.find_by_title(search_query[0].name)
     @comment = @movie.comments.create(text: params[:comment][:text], critic: params[:critic], date: params[:date])
     if @comment.save
-      flash[:success] = "Review added!"
+      flash[:notice] = "Your review has been added!"
       redirect_to result_path
     else
       redirect_to result_path

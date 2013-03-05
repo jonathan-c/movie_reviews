@@ -1,4 +1,10 @@
 <div class="movie-page">
+	
+	<% if !notice.nil? %>
+		<div class="alert alert-success">
+			<%= notice %>
+		</div>
+	<% end %>
 
 	<% if !@result.nil? %>
 		<div id="poster">
